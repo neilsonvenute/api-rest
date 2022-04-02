@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import express from 'express';
+import { resolve } from 'path';
 import './src/database';
 import alunoRoutes from './src/routes/alunoRoutes';
 import fotoRoutes from './src/routes/FotoRoutes';
@@ -19,6 +20,7 @@ class App {
   middlewares() {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
+    this.app.use(express.static(resolve(__dirname,'uploads')));
   }
 
   routes() {
